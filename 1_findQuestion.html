@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>脱离文档流的元素是否可以被点击</title>
+  <style>
+    .container{
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      border: 10px solid #cccccc;
+    }
+    .left-content{
+      width: 200px;
+      height:50px;
+      border: 10px solid #f00;
+      /* position: relative; */
+      /* float: left; */
+      position: absolute;
+    }
+    .right-content{
+      width: 180px;
+      height: 180px;
+      border: 10px solid #0f0;
+      float:left;
+      /* float: right; */
+      /* position: relative; */
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" onclick="gotoNoPlace()">
+      <div class="left-content" onclick="gotoBaidu()">
+          发现问题<a href="www.baidu.com">去百度</a>
+        </div>
+      <div class="right-content" onclick="gotoWechat()">
+          没有问题<a href="weixin.qq.com">去微信</a>
+        </div>
+
+
+  </div>
+  <script>
+    function gotoBaidu(){
+      console.log("go to baidu 可以被点击")
+    }
+    function gotoWechat(){
+      console.log("go to weixin 可以被点击")
+    }
+    function gotoNoPlace(){
+      console.log("父元素被触发")
+    }
+  </script>
+</body>
+</html>
