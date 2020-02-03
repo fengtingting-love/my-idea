@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>音乐播放特效</title>
+  <style>
+    /* 容器整体样式 */
+    .debut {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 胶片发光边缘 */
+    .music-cover {
+      width: 380px;
+      height: 380px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      display: inline-flex;
+      border: 2px solid #B3B3B3;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 音乐播放器 */
+    .audio {
+      margin-top: 150px;
+    }
+
+    /* 内部图片 */
+    .music-cover-image {
+      width: 340px;
+      height: 340px;
+      border: none;
+      border-radius: 50%;
+      animation: circleRun infinite linear 12s;
+    }
+
+    /*动画效果 */
+    @keyframes circleRun {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* blingbling发光 */
+    .music-cover::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(30px);
+      background-image: radial-gradient(white, silver);
+    }
+
+    /* 整体背景 */
+    .music-cover-background {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 音乐播放容器 -->
+  <div class="container">
+    <div class="debut">
+      <!-- 背景 -->
+      <canvas class="music-cover-background" id="background"></canvas>
+      <!-- 信息 -->
+      <div class="music-cover">
+        <img src="./images/moon.jpg" alt="图片不存在" class="music-cover-image">
+      </div>
+      <audio class="audio" src="" controls></audio>
+      <!-- 可以播放mv -->
+      <!-- <video src="/i/movie.ogg" controls="controls"></video> -->
+    </div>
+  </div>
+</body>
+<script>
+  // 交互主要规定canvas动态及小三角形的实现
+  //第一步：获取到canvas画布
+  const canvas = document.getElementById('background');
+  //根据刚刚决定的内部圆画出canvas画布，大小是这个圆的1.68421倍
+  canvas.width = canvas.height = Math.ceil(canvas.parentNode.firstElementChild.offsetWidth * 1.68421);
+  //2π
+  const PI2 = 2 * Math.PI;
+  //画三角形
+
+</script>
+
+</html>
